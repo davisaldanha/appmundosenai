@@ -14,9 +14,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="73dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="73dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/senai"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="7dp"
         android:fontFamily="@font/ar_one_sans_semibold"
         android:text="Faça login para acessar"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
@@ -38,20 +38,20 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
-        android:layout_width="386dp"
+        android:layout_width="374dp"
         android:layout_height="72dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="16dp"
         app:boxStrokeColor="#0069CB"
+        app:endIconMode="clear_text"
+        app:endIconTint="#0069CB"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:startIconDrawable="@drawable/email"
-        app:startIconTint="#0069CB"
-        app:endIconMode="clear_text"
-        app:endIconTint="#0069CB">
+        app:startIconTint="#0069CB">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -64,20 +64,19 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
-        android:layout_width="388dp"
+        android:layout_width="374dp"
         android:layout_height="72dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         app:boxStrokeColor="#0069CB"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:endIconMode="password_toggle"
+        app:endIconTint="#0069CB"
+        app:layout_constraintBottom_toTopOf="@+id/switchLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
         app:startIconDrawable="@drawable/pass"
-        app:startIconTint="#0069CB"
-        app:endIconMode="password_toggle"
-        app:endIconTint="#0069CB">
+        app:startIconTint="#0069CB">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pass"
@@ -88,17 +87,47 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="78dp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:thumbTint="#0069CB"
+        app:trackTint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="225dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/ar_one_sans"
+        android:gravity="center"
+        android:text="Lembrar login"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/switchLogin"
+        app:layout_constraintEnd_toStartOf="@+id/switchLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+
     <Button
         android:id="@+id/login"
-        android:layout_width="158dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="204dp"
+        android:layout_width="161dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="187dp"
         android:backgroundTint="#0069CB"
         android:text="Entrar"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/switchLogin" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
