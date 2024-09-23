@@ -16,9 +16,9 @@
         android:layout_marginStart="73dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="73dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="377dp"
         android:src="@drawable/senai"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +31,7 @@
         android:layout_marginBottom="7dp"
         android:fontFamily="@font/ar_one_sans_semibold"
         android:text="Faça login para acessar"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +98,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:thumbIconTint="#FFFFFF"
         app:thumbTint="#0069CB"
+        app:trackDecorationTint="#0069CB"
         app:trackTint="#FFFFFF" />
 
     <TextView
@@ -118,8 +121,8 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="161dp"
-        android:layout_height="46dp"
+        android:layout_width="187dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="187dp"
         android:backgroundTint="#0069CB"
         android:text="Entrar"
@@ -128,6 +131,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchLogin" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginBottom="139dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ar_one_sans"
+            android:text="Ainda não possui uma conta?"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/cadastro"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ar_one_sans_semibold"
+            android:text="Criar conta!"
+            android:textColor="#0069CB"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,5 @@
     <string name="prefs_login">prefs_login</string>
     <string name="prefs_email">prefs_email</string>
     <string name="prefs_pass">prefs_pass</string>
+    <string name="prefs_switch">prefs_switch</string>
 </resources>

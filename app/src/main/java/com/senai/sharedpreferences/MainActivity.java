@@ -46,18 +46,23 @@ public class MainActivity extends AppCompatActivity {
         inputEmail.setText(sp.getString(getString(R.string.prefs_email), ""));
         //Capturar o valor armazenado na chave correspondente a senha
         inputPass.setText(sp.getString(getString(R.string.prefs_pass), ""));
+        //Capturar o valor armazenado na chave correspondente ao switch
+        switchLogin.setChecked(sp.getBoolean(getString(R.string.prefs_switch), false ));
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editor = sp.edit();
                 if(switchLogin.isChecked()){
-                    editor = sp.edit();
                     editor.putString(getString(R.string.prefs_email), inputEmail.getText().toString());
                     editor.putString(getString(R.string.prefs_pass), inputPass.getText().toString());
-                    editor.apply();
+                    editor.putBoolean(getString(R.string.prefs_switch), switchLogin.isChecked());
                 }else{
-                    //Feature para próxima aula
+                    editor.remove(getString(R.string.prefs_email));
+                    editor.remove(getString(R.string.prefs_pass));
+                    editor.remove(getString(R.string.prefs_switch));
                 }
+                editor.apply();
 
                 Intent i = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(i);
