@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private EditText inputEmail;
     private EditText inputPass;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
     private MaterialSwitch switchLogin;
 
     @Override
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         inputEmail = findViewById(R.id.email);
         inputPass = findViewById(R.id.pass);
         btnLogin = findViewById(R.id.login);
+        btnRegister = findViewById(R.id.register);
         switchLogin = findViewById(R.id.switchLogin);
 
         //Criando um arquivo compartilhável  para armazenar dados do usuário em modo privado
@@ -68,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
 
                 finish(); //Finalizar a execução da activity atual
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }
