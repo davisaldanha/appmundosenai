@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
 import com.senai.sharedpreferences.controllers.StudentController;
 import com.senai.sharedpreferences.database.DatabaseHelper;
 import com.senai.sharedpreferences.entities.Student;
@@ -27,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private StudentController studentController;
 
+    private TextInputLayout layoutEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputName = findViewById(R.id.inputName);
         btnRegister = findViewById(R.id.cadastrar);
         btnLogin = findViewById(R.id.login);
+        layoutEmail = findViewById(R.id.layoutEmail);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +54,15 @@ public class RegisterActivity extends AppCompatActivity {
                         );
                try {
                     studentController = new StudentController(RegisterActivity.this);
-                    Snackbar.make(view,  studentController.save(student), Snackbar.LENGTH_SHORT).show();
+                    if (studentController.checkEmail(inputEmail.getText().toString())){
+                        layoutEmail.setError("Email já cadastrado!");
+                    }else{
+                        layoutEmail.setError(null);
+                        Snackbar.make(view,  studentController.save(student), Snackbar.LENGTH_SHORT).show();
+                        inputName.setText("");
+                        inputEmail.setText("");
+                        inputPass.setText("");
+                    }
                }catch (Exception e){}
             }
         });

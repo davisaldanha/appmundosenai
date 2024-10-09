@@ -154,11 +154,28 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/ar_one_sans_semibold"
             android:text="Criar conta!"
             android:textColor="#0069CB"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/forgetPassword"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:fontFamily="@font/ar_one_sans_semibold"
+        android:text="Esqueceu a senha?"
+        android:textColor="#0069CB"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

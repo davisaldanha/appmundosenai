@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private EditText inputEmail;
     private EditText inputPass;
-    private Button btnLogin, btnRegister;
+    private Button btnLogin, btnRegister, btnForgetPass;
     private MaterialSwitch switchLogin;
 
     private StudentController studentController;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.login);
         btnRegister = findViewById(R.id.register);
         switchLogin = findViewById(R.id.switchLogin);
+        btnForgetPass = findViewById(R.id.forgetPassword);
 
         //Criando um arquivo compartilhável  para armazenar dados do usuário em modo privado
         //O MODE_PRIVATE permite que apenas a aplicação possa acessar o arquivo
@@ -88,6 +89,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnForgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ForgetPasswordActivity.class);
                 startActivity(i);
                 finish();
             }

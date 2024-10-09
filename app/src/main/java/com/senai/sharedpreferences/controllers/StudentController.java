@@ -66,7 +66,16 @@ public class StudentController {
 
         Cursor cursor = db.query("student", campos, where, null, null, null, null);
 
-        return cursor.moveToNext() ;
+        return cursor.moveToNext();
+    }
 
+    public boolean checkEmail(String email){
+        db = databaseHelper.getReadableDatabase();
+        String where = String.format("email = '%s'", email);
+        String[] campos = {"email"};
+
+        Cursor cursor = db.query("student", campos, where, null, null, null, null);
+
+        return cursor.moveToNext();
     }
 }
