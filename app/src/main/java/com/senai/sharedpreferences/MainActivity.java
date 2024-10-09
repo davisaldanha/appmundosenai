@@ -16,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.snackbar.Snackbar;
+import com.senai.sharedpreferences.controllers.StudentController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputPass;
     private Button btnLogin, btnRegister;
     private MaterialSwitch switchLogin;
+
+    private StudentController studentController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +57,30 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor = sp.edit();
-                if(switchLogin.isChecked()){
-                    editor.putString(getString(R.string.prefs_email), inputEmail.getText().toString());
-                    editor.putString(getString(R.string.prefs_pass), inputPass.getText().toString());
-                    editor.putBoolean(getString(R.string.prefs_switch), switchLogin.isChecked());
-                }else{
-                    editor.remove(getString(R.string.prefs_email));
-                    editor.remove(getString(R.string.prefs_pass));
-                    editor.remove(getString(R.string.prefs_switch));
+                studentController = new StudentController(MainActivity.this);
+                boolean login = studentController.authentication(inputEmail.getText().toString(), inputPass.getText().toString());
+
+                //Verificar se o usuário está autenticado
+                if(login){
+                    editor = sp.edit();
+                    if(switchLogin.isChecked()){
+                        editor.putString(getString(R.string.prefs_email), inputEmail.getText().toString());
+                        editor.putString(getString(R.string.prefs_pass), inputPass.getText().toString());
+                        editor.putBoolean(getString(R.string.prefs_switch), switchLogin.isChecked());
+                    }else{
+                        editor.remove(getString(R.string.prefs_email));
+                        editor.remove(getString(R.string.prefs_pass));
+                        editor.remove(getString(R.string.prefs_switch));
+                    }
+                    editor.apply();
+
+                    Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(i);
+
+                    finish(); //Finalizar a execução da activity atual
+                }else {
+                    Snackbar.make(view, "Usuário ou senha inválidos", Snackbar.LENGTH_LONG).show();
                 }
-                editor.apply();
-
-                Intent i = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(i);
-
-                finish(); //Finalizar a execução da activity atual
             }
         });
 
